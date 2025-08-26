@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sen:wght@400..800&display=swap');
+
+:root {
+  --black: #232536;
+  --purple: #592EA9;
+  --yellow: #FFD050;
+  --light-yellow: #FBF6EA;
+  --white: #FFFFFF;
+  --lavender: #F4F0F8;
+  --dark-grey: #4C4C4C;
+  --light-grey: #F4F4F4;
+  --medium-grey: #6D6E76;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-family: "Sen", sans-serif;
+  font-size: 48px;
+  line-height: 64px;
+  letter-spacing: -2px;
+  font-weight: 700;
+  color: var(--black);
+}
+
+h2 {
+  font-family: "Sen", sans-serif;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -2px;
+  font-weight: 700;
+  color: var(--black);
+}
+
+h3 {
+  font-family: "Sen", sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -1px;
+  font-weight: 700;
+  color: var(--black);
+}
+
+h4 {
+  font-family: "Sen", sans-serif;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: -1px;
+  font-weight: 700;
+  color: var(--black);
+}
+
+h5 {
+  font-family: "Sen", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--black);
+}
+
+.body-1 {
+  font-size: 16px;
+  line-height: 28px;
+  font-family: "Inter", sans-serif;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.body-2 {
+  font-size: 14px;
+  line-height: 28px;
+  font-family: "Inter", sans-serif;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.button {
+  text-decoration: none;
+  color: var(--black);
+  padding: 16px 48px;
+  display: block;
+  width: fit-content;
+  font-family: "Sen", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+.button.yellow {
+  background-color: var(--yellow);
+}
+
+.button.white {
+  background-color: var(--white);
+}
+
+.wrapper {
+  max-width: 1248px;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* socials */
+.socials {
+  display: flex;
+  gap: 20px;
+}
+
+.social-link {
+  color: var(--medium-grey);
+  font-size: 18px;
+  transition: color 500ms ease;
+}
+
+.social-link:hover {
+  color: var(--yellow);
+}
+
+.cap-1 {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.cta-container {
+  padding: 100px 0;
+}
+
+@media screen and (width<980px) {
+  h1 {
+    font-size: 35px;
+    line-height: 1;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+}

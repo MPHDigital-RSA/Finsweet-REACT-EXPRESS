@@ -1,0 +1,8 @@
+.cta.wrapper {
+    max-width: 450px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
