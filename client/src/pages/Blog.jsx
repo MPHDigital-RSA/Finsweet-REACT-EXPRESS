@@ -1,165 +1,119 @@
 import '../styles/Blog.css';
 import BannerImage from '../assets/blog-hero-image.png'
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 import Cta from '../components/Cta';
 
+import businessIcon from "../assets/business-icon.svg"
+import startupIcon from "../assets/startup-icon.svg"
+import economyIcon from "../assets/economy-icon.svg"
+import technologyIcon from "../assets/technology-icon.svg"
 
-const data = [
-    {
-        "name": "Floyd Miles",
-        "position": "Content writer",
-        "avatar": "https://images.unsplash.com/photo-1725866546799-4cc16f6cba23?q=80&w=749&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "company": "Meta",
-        "facebook": "/meta",
-        "twitter": "#",
-        "instagram": "#",
-        "linkedin": "#",
-        "posts":
-            [
-                {
-                    "postId": 1,
-                    "category": "business",
-                    "title": "Design tips for designers that cover everything you need",
-                    "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
-                    "thumbnail": "https://images.unsplash.com/photo-1522071901873-411886a10004?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    "createdAt": "23 May 2025"
-                }
-            ]
-    },
-    {
-        "name": "Dianne Russel",
-        "position": "Software Developer",
-        "avatar": "https://images.unsplash.com/photo-1656338997878-279d71d48f6e?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "company": "Google",
-        "facebook": "#",
-        "twitter": "#",
-        "instagram": "#",
-        "linkedin": "#",
-        "posts":
-            [
-                {
-                    "postId": 2,
-                    "category": "business",
-                    "title": "Design tips for designers that cover everything you need",
-                    "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
-                    "thumbnail": "https://images.unsplash.com/photo-1522071901873-411886a10004?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    "createdAt": "23 May 2025"
-                }
-            ]
-    },
-    {
-        "userId": 1,
-        "name": "Dianne Russel",
-        "position": "Content writer",
-        "avatar": "https://plus.unsplash.com/premium_photo-1705009607254-5618bb0d0c35?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "company": "Meta",
-        "facebook": "#",
-        "twitter": "#",
-        "instagram": "#",
-        "linkedin": "#",
-        "posts":
-            [
-                {
-                    "postId": 3,
-                    "category": "business",
-                    "title": "Design tips for designers that cover everything you need",
-                    "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
-                    "thumbnail": "https://images.unsplash.com/photo-1522071901873-411886a10004?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    "createdAt": "23 May 2025"
-                }
-            ]
+import CategoryCard from '../components/CategoryCard';
+import PostCard1 from '../components/PostCard1';
+import { Link } from 'react-router-dom';
 
+
+const categories = [
+    {
+        icon: businessIcon,
+        title: "Business",
+        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
     },
     {
-        "name": "Leslie Alexander",
-        "position": "Content writer",
-        "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=761&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "company": "Meta",
-        "facebook": "#",
-        "twitter": "#",
-        "instagram": "#",
-        "linkedin": "#",
-        "posts":
-            [
-                {
-                    "postId": 5,
-                    "category": "startup",
-                    "title": "Design tips for designers that cover everything you need",
-                    "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
-                    "thumbnail": "https://images.unsplash.com/photo-1522071901873-411886a10004?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    "createdAt": "23 May 2025"
-                }
-            ]
-    }
-];
+        icon: startupIcon,
+        title: "Startup",
+        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
+    },
+    {
+        icon: economyIcon,
+        title: "Economy",
+        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
+    },
+    {
+        icon: technologyIcon,
+        title: "Technology",
+        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
+    },
+]
 
 const Blog = () => {
 
-    // const [allPosts, setAllPosts] = useState([]);
-    // const [postsLoaded, setPostsLoaded] = useState(false);
-    let userIndex = 3;
-    let post = data[userIndex].posts[0];
-    console.log(post)
+    const [posts, setPosts] = useState([]);
+    const [arePostsLoaded, setArePostsLoaded] = useState(false);
 
-    // useEffect(() => {
-    //     fetch('../data/authors.json')
-    //         .then(res => res.json())
-    //         .then(data => console.log(data))
-    //         .catch(err => console.log(err))
-    // }, [])
+    useEffect(() => {
+        try {
+            axios(`http://localhost:3001/api/posts`).then(posts => {
+
+                // THE OLD WAY I DID IT 😂
+                // const allPosts = []
+
+                // posts.data.forEach(post => {
+                //     post.forEach(item => {
+                //         allPosts.push(item);
+                //     })
+                // });
+
+                // setPosts(allPosts);
+                // setArePostsLoaded(true);
+                // console.log(allPosts);
+
+                // THE BETTER WAY 😎 
+                // console.log(posts.data)
+                setPosts(posts.data)
+                setArePostsLoaded(true);
+            })
+        } catch (error) {
+            console.log(error);
+            setArePostsLoaded(false);
+        }
+
+    }, []);
+
+
+    let index = 0
 
     return (
-        <div className='blog'>
-            <div className="banner">
-                <div className="wrapper">
-                    {
-                        post && (
+        <main className='blog'>
+            <section className="banner">
+                {
+                    arePostsLoaded ? <div className="wrapper">
+                        {
                             <div className="banner-text">
                                 <div className="cap-1">Featured Post</div>
-                                <h2>{post.title}</h2>
-                                <p className='body-1'>By <a href="#" className='body-1 author-link'> {data[userIndex].name} </a>| {post.createdAt}</p>
+                                <h2>{posts[index].title}</h2>
+                                <p className='body-1'>By <a href="#" className='body-1 author-link'> {posts[index].user.name} </a>| {posts[index].createdAt}</p>
                                 <p className="body-1">
-                                    {post.description}
+                                    {posts[index].description}
                                 </p>
-                                <a href="#" className='button yellow'>Read More ‣</a>
+                                <a href={`/post/${posts[index]._id}`} className='button yellow'>Read More ‣</a>
                             </div>
-                        )
-                    }
-                    <div className="banner-image"><img src={post.thumbnail} alt="" width={515} height={359} /></div>
-                </div>
-            </div>
 
-            <div className='wrapper posts'>
+                        }
+                        <div className="banner-image"><img src={posts[index].thumbnail} alt="" width={515} height={359} /></div>
+                    </div> :
+                        <p className='wrapper'>Loading</p>
+                }
+            </section>
+
+            <section className='wrapper posts'>
                 <h1>All posts</h1>
 
-                <div className="posts-container">
-                    <div className="post">
-                        <div className="post-image">
-                            <img src={BannerImage} alt="" width={390} />
-                        </div>
+                {arePostsLoaded ?
 
-                        <div className="post-info">
-                            <div className="cap-1">Startup</div>
-                            <h2>Design tips for designers that cover everything you need</h2>
-                            <p className="body-1">
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-                            </p>
-                        </div>
-                    </div>
-                    <div className="post">
-                        <div className="post-image">
-                            <img src={BannerImage} alt="" width={390} />
-                        </div>
+                    <div className="posts-container">
+                        {
+                            posts.map((post, index) => (
 
-                        <div className="post-info">
-                            <div className="cap-1">Startup</div>
-                            <h2>Design tips for designers that cover everything you need</h2>
-                            <p className="body-1">
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                                <PostCard1 post={post} />
+
+                            ))
+                        }
+                    </div> :
+                    <p>loading</p>
+                }
+
 
                 <div className="posts-nav">
                     <a href="#" className="link">
@@ -169,13 +123,25 @@ const Blog = () => {
                         Next ›
                     </a>
                 </div>
-            </div>
+            </section>
 
-            <div className="cta-container">
+            <section className="category wrapper">
+
+                <h2>All Categories</h2>
+                <div className="category-items-container">
+                    {
+                        categories.map(category => (
+                            <CategoryCard category={category} key={category.title} />
+                        ))
+                    }
+                </div>
+            </section>
+
+            <section className="cta-container">
                 <Cta />
-            </div>
+            </section>
 
-        </div>
+        </main>
     )
 }
 

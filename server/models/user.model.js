@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
+const userSchema = mongoose.Schema({
     name: {
         type: String
     },
@@ -25,9 +25,8 @@ const userSchema = new mongoose.Schema({
     linkedin: {
         type: String
     },
-    posts: {
-        type: Array
-    },
+    posts: [
+        { type: mongoose.Schema.Types.ObjectId, ref: 'Post' }]
 });
 
 const User = mongoose.model("User", userSchema);

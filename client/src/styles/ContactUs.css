@@ -21,6 +21,10 @@
     margin-top: 15px;
 }
 
+.contact .info h5 {
+    color: var(--white);
+}
+
 .hours-and-details {
     margin-top: 30px;
     background-color: var(--purple);

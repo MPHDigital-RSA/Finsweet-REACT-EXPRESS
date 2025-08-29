@@ -1,0 +1,18 @@
+.post-navigation-card {
+    padding: 30px;
+    transition: background-color 500ms ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.post-navigation-card:hover {
+    background-color: #ffd05078
+}
+
+.post-navigation-card .author-and-date {
+    color: var(--black);
+}
+
+.post-navigation-card .author-and-date span {
+    color: var(--purple);
+}

@@ -3,13 +3,14 @@ import { IoLogoFacebook } from "react-icons/io5";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
 import { SiLinkedin } from "react-icons/si";
+import { Link } from 'react-router-dom';
 
 const AuthorCard = ({ author }) => {
     return (
         <div className="author-card">
-            <div className="image">
+            <Link to={`/author/${author._id}`} className="image">
                 <img src={author.avatar} alt="" className='avatar' />
-            </div>
+            </Link>
 
             <div className="text-info">
                 <h3>{author.name}</h3>

@@ -12,7 +12,7 @@
     margin-inline: auto;
 }
 
-.about .grid {
+.grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
@@ -136,6 +136,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    /* padding-inline: 24px; */
 }
 
 @media screen and (width<=1235px) {

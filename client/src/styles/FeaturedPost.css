@@ -1,0 +1,27 @@
+.featured-indiv-post {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.featured-indiv-post .image img {
+    object-fit: cover;
+    height: 300px;
+    width: 100%;
+}
+
+.featured-indiv-post .author-and-date {
+    color: var(--black);
+}
+
+.featured-indiv-post .author-and-date span {
+    color: var(--purple);
+}
+
+@media screen and (width<980px) {
+    .featured-indiv-post .image img {
+
+        height: 200px;
+
+    }
+}

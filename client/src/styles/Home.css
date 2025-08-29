@@ -1,0 +1,286 @@
+.hero {
+    background-image: url("/home-banner-bg.png");
+    background-position: center bottom;
+    background-size: cover;
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    padding-block: 50px;
+}
+
+.hero-text {
+    max-width: 70ch;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.subheading {
+    font-weight: 500;
+}
+
+.subheading span {
+    font-weight: 700;
+}
+
+.hero-text h1 {
+    max-width: 80ch;
+    color: var(--white);
+    line-height: 1;
+}
+
+.author-and-date,
+.hero-description {
+    color: var(--white);
+}
+
+.author-and-date span {
+    color: var(--yellow);
+}
+
+.hero .button {
+    margin-top: 20px;
+}
+
+/* featured post section*/
+
+
+.featured-section {
+    padding-block: 40px;
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+        "heading all-heading"
+        "big-post all-posts"
+    ;
+}
+
+.featured-heading {
+    grid-area: heading;
+}
+
+.all-posts {
+    grid-area: all-heading;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.featured-post {
+    grid-area: big-post;
+    padding: 20px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.18);
+    /* margin-top: 10px; */
+}
+
+.all-posts-navigation {
+    grid-area: all-posts;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* margin-top: 10px; */
+}
+
+/* about us code */
+.mission-and-about .grid {
+    background-color: var(--lavender);
+    padding: 40px;
+}
+
+.mission-and-about .grid>* {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mission-and-about .about {
+    margin-top: 0;
+}
+
+.home .category {
+    padding-block: 60px;
+}
+
+/* why we started code */
+.why-we-started {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.why-we-started .image {
+    height: 400px;
+}
+
+.why-we-started .image img {
+    height: 100%;
+    width: 70%;
+    object-fit: cover;
+}
+
+.why-we-started .info {
+    width: 700px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.818);
+    right: 40px;
+}
+
+/* authors code */
+.home .authors {
+    margin-top: 0;
+}
+
+
+/* testimonials code */
+.testimonials {
+    background-color: var(--light-yellow);
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.testimonial-text {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.testimonial-carousel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    border-left: 2px solid var(--yellow);
+    padding-left: 80px;
+    position: relative;
+}
+
+.testimonial-profile {
+    display: flex;
+    gap: 20px;
+}
+
+.testimonial-avatar {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.carousel-navigation {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.carousel-navigation button {
+    width: 48px;
+    height: 48px;
+    background-color: var(--white);
+    color: var(--black);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 500ms ease;
+}
+
+.carousel-navigation button:hover {
+    transform: scale(1.1);
+    background-color: var(--black);
+    color: var(--white);
+}
+
+@media screen and (width<=980px) {
+    .featured-section {
+
+        grid-template-areas:
+            "heading heading"
+            "big-post big-post"
+            "all-heading all-heading"
+            "all-posts all-posts"
+        ;
+    }
+
+    .all-posts-navigation {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .why-we-started .image img {
+        width: 100%;
+    }
+
+    .why-we-started .info {
+        width: unset;
+        right: 24px;
+        left: 24px;
+    }
+
+    .testimonials {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-carousel {
+        padding-left: 20px;
+        gap: 40px;
+
+    }
+
+    .testimonial-description {
+        font-size: 20px;
+    }
+
+    .testimonial-text {
+        text-align: center;
+        gap: 5px;
+    }
+}
+
+
+@media screen and (width<=680px) {
+    .hero-text {
+        max-width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .all-posts-navigation {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .mission-and-about .grid {
+        /* flex-direction: column; */
+        grid-template-columns: 1fr;
+    }
+
+    .mission-and-about .grid h3 {
+        font-size: 22px;
+    }
+
+    .why-we-started .info {
+        align-items: center;
+        text-align: center;
+
+    }
+
+    .carousel-navigation {
+        background-color: var(--light-yellow);
+        padding: 10px;
+        bottom: -108px;
+        right: -40px;
+    }
+}

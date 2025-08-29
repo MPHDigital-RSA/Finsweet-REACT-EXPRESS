@@ -2,16 +2,16 @@ import '../styles/ContactUs.css'
 
 const ContactUs = () => {
     return (
-        <div className='contact wrapper'>
-            <div className="text">
+        <main className='contact wrapper'>
+            <section className="text">
                 <div className="cap-1 body-1">
                     Contact us
                 </div>
                 <h1>Let’s Start a Conversation</h1>
                 <p className="body-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
-            </div>
+            </section>
 
-            <div className="hours-and-details">
+            <section className="hours-and-details">
                 <div className="working-hours">
                     <p className="title body-2">Working hours</p>
                     <div className="info">
@@ -26,7 +26,7 @@ const ContactUs = () => {
                         <p className="light body-1">hello@finsweet.com</p>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <form action="">
                 <input type="text" placeholder='Full Name' className='input' />
@@ -40,7 +40,7 @@ const ContactUs = () => {
                 <textarea name="message" placeholder='Message' className='input'></textarea>
                 <button className="button yellow">Send Message</button>
             </form>
-        </div >
+        </main >
     )
 }
 
