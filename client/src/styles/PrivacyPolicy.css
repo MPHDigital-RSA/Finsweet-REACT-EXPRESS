@@ -1,16 +1,16 @@
-.privacy .banner {
-    padding-block: 60px;
-    text-align: center;
-    background-color: var(--lavender);
-}
+ .banner {
+     padding-block: 60px;
+     text-align: center;
+     background-color: var(--lavender);
+ }
 
-.privacy .content {
-    max-width: 798px;
-    padding-inline: 24px;
-    margin-inline: auto;
-    padding-block: 60px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    /* text-align: center; */
-}
+ .privacy .content {
+     max-width: 798px;
+     padding-inline: 24px;
+     margin-inline: auto;
+     padding-block: 60px;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+     /* text-align: center; */
+ }

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../styles/CategoryCard.css';
 
 const CategoryCard = ({ category }) => {
@@ -6,13 +7,13 @@ const CategoryCard = ({ category }) => {
     };
 
     return (
-        <div className='category-card' onClick={handleClick}>
+        <Link className='category-card' to={`/category`}>
             <div className="category-icon">
                 <img src={category.icon} alt="" />
             </div>
             <h3>{category.title}</h3>
             <p className='body-1'>{category.description}</p>
-        </div>
+        </Link>
     )
 }
 

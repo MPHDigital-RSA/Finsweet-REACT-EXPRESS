@@ -1,0 +1,30 @@
+.postcard-2 {
+    max-width: 350px;
+    display: grid;
+    gap: 10px;
+}
+
+.postcard-2 .image {
+    width: 100%;
+    height: 200px;
+}
+
+.postcard-2 .image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.post-link {
+    text-decoration: none;
+}
+
+@media screen and (width<=680px) {
+    .postcard-2 {
+        max-width: 100%;
+    }
+
+    .postcard-2 section.cta-container {
+        padding-block: 20px;
+    }
+}

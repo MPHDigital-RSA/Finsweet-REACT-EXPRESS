@@ -10,9 +10,6 @@ app.use(cors());
 // routers
 app.use('/api', userRouter);
 
-app.get('/', (req, res) => {
-    res.json({ message: "Success!!" })
-})
 
 app.listen(3001, () => {
     mongoose.connect('mongodb://127.0.0.1:27017/finSweet').

@@ -8,6 +8,7 @@ import ContactUs from './pages/ContactUs'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import Author from './pages/Author';
 import BlogPost from './pages/BlogPost';
+import Category from './pages/Category';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/privacy" exact element={<PrivacyPolicy />} />
         <Route path="/author/:id" exact element={<Author />} />
         <Route path="/post/:id" exact element={<BlogPost />} />
+        <Route path="/category" exact element={<Category />} />
       </Routes>
 
       <Footer />

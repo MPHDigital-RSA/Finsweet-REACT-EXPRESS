@@ -1,5 +1,4 @@
 import '../styles/Blog.css';
-import BannerImage from '../assets/blog-hero-image.png'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Cta from '../components/Cta';
@@ -11,7 +10,6 @@ import technologyIcon from "../assets/technology-icon.svg"
 
 import CategoryCard from '../components/CategoryCard';
 import PostCard1 from '../components/PostCard1';
-import { Link } from 'react-router-dom';
 
 
 const categories = [
@@ -83,7 +81,7 @@ const Blog = () => {
                             <div className="banner-text">
                                 <div className="cap-1">Featured Post</div>
                                 <h2>{posts[index].title}</h2>
-                                <p className='body-1'>By <a href="#" className='body-1 author-link'> {posts[index].user.name} </a>| {posts[index].createdAt}</p>
+                                <p className='body-1'>By <a href="#" className='body-1 author-link'> {posts[index].user.name} </a>| {posts[index].createdAt.slice(0, 10)}</p>
                                 <p className="body-1">
                                     {posts[index].description}
                                 </p>
