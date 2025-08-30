@@ -63,7 +63,6 @@ const Home = () => {
                     allAuthors.push(post.user);
                 })
 
-                console.log(allAuthors);
                 setAuthors(allAuthors);
                 setAreAuthorsLoaded(true);
             })
@@ -177,7 +176,7 @@ const Home = () => {
                         areAuthorsLoaded ?
                             <div className="authors-flex">
                                 {
-                                    authors.slice(0, 4).map((author, index) => (
+                                    authors.slice(1, 5).map((author, index) => (
                                         <AuthorCard author={author} key={index} />
                                     ))
 

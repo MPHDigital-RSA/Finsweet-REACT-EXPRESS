@@ -2,12 +2,10 @@ import { Link } from 'react-router-dom';
 import '../styles/CategoryCard.css';
 
 const CategoryCard = ({ category }) => {
-    const handleClick = () => {
-        alert(`category ${category.title} clicked!`)
-    };
+
 
     return (
-        <Link className='category-card' to={`/category`}>
+        <Link className='category-card' to={`/category/${category.title}`}>
             <div className="category-icon">
                 <img src={category.icon} alt="" />
             </div>

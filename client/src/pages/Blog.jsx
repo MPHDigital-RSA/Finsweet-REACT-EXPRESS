@@ -70,7 +70,7 @@ const Blog = () => {
     }, []);
 
 
-    let index = 0
+    let index = 1;
 
     return (
         <main className='blog'>
@@ -104,7 +104,7 @@ const Blog = () => {
                         {
                             posts.map((post, index) => (
 
-                                <PostCard1 post={post} />
+                                <PostCard1 post={post} key={index} />
 
                             ))
                         }

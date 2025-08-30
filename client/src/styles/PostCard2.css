@@ -1,7 +1,17 @@
 .postcard-2 {
     max-width: 350px;
+
+    text-decoration: none;
+}
+
+.post-card-2-body {
     display: grid;
     gap: 10px;
+    padding: 20px 10px;
+}
+
+.post-card-2-body:hover {
+    background-color: var(--light-yellow);
 }
 
 .postcard-2 .image {

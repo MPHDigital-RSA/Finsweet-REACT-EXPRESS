@@ -11,14 +11,10 @@
 }
 
 .posts-and-categories .post-image {
-    max-width: 300px;
+    max-width: 260px;
     aspect-ratio: 1;
     width: 100%;
-    height: 250px;
-}
-
-.posts-and-categories .post {
-    gap: 20px;
+    height: 260px;
 }
 
 .posts-and-categories .post-info h2 {

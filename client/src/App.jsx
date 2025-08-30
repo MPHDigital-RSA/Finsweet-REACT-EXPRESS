@@ -25,7 +25,7 @@ function App() {
         <Route path="/privacy" exact element={<PrivacyPolicy />} />
         <Route path="/author/:id" exact element={<Author />} />
         <Route path="/post/:id" exact element={<BlogPost />} />
-        <Route path="/category" exact element={<Category />} />
+        <Route path="/category/:category" exact element={<Category />} />
       </Routes>
 
       <Footer />

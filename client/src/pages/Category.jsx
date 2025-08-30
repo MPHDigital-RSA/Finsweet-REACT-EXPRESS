@@ -8,6 +8,7 @@ import businessIcon from "../assets/business-icon.svg"
 import startupIcon from "../assets/startup-icon.svg"
 import economyIcon from "../assets/economy-icon.svg"
 import technologyIcon from "../assets/technology-icon.svg"
+import { useParams } from 'react-router-dom';
 
 const categories = [
     {
@@ -40,11 +41,15 @@ const Category = () => {
 
     const [filteredPosts, setFilteredPosts] = useState([]);
 
+    const { category } = useParams();
+
     useEffect(() => {
         try {
             axios(`http://localhost:3001/api/posts`).then(posts => {
-                // filter the array before updating to the posts variable
-                setPosts(posts.data);
+                // filter the array and return posts where the post.category is equal to the passed category
+                const categorisedPosts = posts.data.filter((post) => post.category === category);
+
+                setPosts(categorisedPosts);
                 setArePostsLoaded(true);
                 // setFilteredPosts(filterPosts("Technology"));
             })
@@ -53,7 +58,7 @@ const Category = () => {
             setArePostsLoaded(false);
         }
 
-    }, []);
+    }, [category]);
 
     function filterPosts(category) {
         if (posts) {
@@ -67,7 +72,7 @@ const Category = () => {
     return (
         <main className='category'>
             <section className='banner'>
-                <h1>Business</h1>
+                <h1>{category}</h1>
                 <p className="body-1">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
                 </p>

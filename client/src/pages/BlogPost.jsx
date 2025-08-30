@@ -42,8 +42,6 @@ const BlogPost = () => {
 
     }, []);
 
-    console.log(posts)
-
     function handleIcon(post) {
         if (post.category === 'Business') {
             return <img src={businessIcon} />
@@ -142,11 +140,7 @@ const BlogPost = () => {
                         <div className='posts-container'>
                             {
                                 posts.slice(0, 3).map((post) => (
-
-                                    <Link to={`/post/${post._id}`} key={post._id} className='post-link'>
-                                        <PostCard2 post={post} />
-                                    </Link>
-
+                                    <PostCard2 post={post} key={post._id} />
                                 ))
                             }
                         </div> :

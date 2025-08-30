@@ -140,7 +140,7 @@
 /* testimonials code */
 .testimonials {
     background-color: var(--light-yellow);
-    padding: 40px;
+    padding: 100px;
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 40px;
@@ -158,7 +158,7 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
-    border-left: 2px solid var(--yellow);
+    border-left: 2px solid var(--medium-grey);
     padding-left: 80px;
     position: relative;
 }
@@ -282,5 +282,9 @@
         padding: 10px;
         bottom: -108px;
         right: -40px;
+    }
+
+    .testimonials {
+        padding: 40px;
     }
 }

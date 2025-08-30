@@ -6,6 +6,7 @@ import { FaInstagram } from "react-icons/fa6";
 import { SiLinkedin } from "react-icons/si";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import PostCard1 from '../components/PostCard1';
 
 const Author = () => {
 
@@ -63,19 +64,7 @@ const Author = () => {
                         <div className="posts-container">
                             {
                                 author.posts.map((post, index) => (
-                                    <div className="post" key={index}>
-                                        <div className="post-image">
-                                            <img src={post.thumbnail} alt="" width={390} />
-                                        </div>
-
-                                        <div className="post-info">
-                                            <div className="cap-1">{post.category}</div>
-                                            <h2>{post.title}</h2>
-                                            <p className="body-1">
-                                                {post.description}
-                                            </p>
-                                        </div>
-                                    </div>
+                                    <PostCard1 post={post} key={index} />
                                 ))
                             }
                         </div> :
