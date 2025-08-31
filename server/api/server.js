@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -10,9 +11,13 @@ app.use(cors());
 // routers
 app.use('/api', userRouter);
 
-app.listen(3001, () => {
-    mongoose.connect('mongodb://127.0.0.1:27017/finSweet').
-        then((res) => {
+app.get('/', (req, res) => {
+    res.json({ message: "Successfully connected to the Prince Dev API" });
+})
+
+app.listen(process.env.PORT, () => {
+    mongoose.connect(process.env.MONGODB_URI).
+        then(() => {
             console.log("CONNECTING TO MONGO SUCCESS!!")
         }).catch(err => {
             console.log(err)
