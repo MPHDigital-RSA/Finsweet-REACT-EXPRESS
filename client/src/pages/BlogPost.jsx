@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import '../styles/BlogPost.css';
-import { Link } from "react-router-dom";
 
 import businessIcon from "../assets/business-icon.svg"
 import startupIcon from "../assets/startup-icon.svg"
@@ -25,12 +24,12 @@ const BlogPost = () => {
 
     useEffect(() => {
         try {
-            axios(`http://localhost:3001/api/posts/${id}`).then(post => {
+            axios(`https://finsweet-backend.vercel.app/api/posts/${id}`).then(post => {
                 setPost(post.data);
                 setIsPostloaded(true);
             });
 
-            axios(`http://localhost:3001/api/posts`).then(post => {
+            axios(`https://finsweet-backend.vercel.app/api/posts`).then(post => {
                 setPosts(post.data);
                 setArePostsloaded(true);
             });

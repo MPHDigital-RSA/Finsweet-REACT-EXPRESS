@@ -52,7 +52,7 @@ const Home = () => {
 
     useEffect(() => {
         try {
-            axios(`http://localhost:3001/api/posts`).then(posts => {
+            axios(`https://finsweet-backend.vercel.app/api/posts`).then(posts => {
                 setPosts(posts.data)
                 setArePostsLoaded(true);
 

@@ -15,7 +15,7 @@ const AboutUs = () => {
 
     useEffect(() => {
         try {
-            axios("http://localhost:3001/api/users").then(authors => {
+            axios("https://finsweet-backend.vercel.app/api/users").then(authors => {
                 setAuthors(authors.data);
                 setAreAuthorsLoaded(true);
             })
@@ -25,8 +25,6 @@ const AboutUs = () => {
         }
 
     }, []);
-
-    // console.log(authors)
 
     return (
         <div className="about wrapper">

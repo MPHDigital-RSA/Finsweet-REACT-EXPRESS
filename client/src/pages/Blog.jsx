@@ -42,7 +42,7 @@ const Blog = () => {
 
     useEffect(() => {
         try {
-            axios(`http://localhost:3001/api/posts`).then(posts => {
+            axios(`https://finsweet-backend.vercel.app/api/posts`).then(posts => {
 
                 // THE OLD WAY I DID IT 😂
                 // const allPosts = []
