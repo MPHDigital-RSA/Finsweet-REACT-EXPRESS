@@ -1,69 +1,36 @@
 import '../styles/Category.css';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import PostCard1 from '../components/PostCard1';
 import CategoryCard from '../components/CategoryCard';
-
-import businessIcon from "../assets/business-icon.svg"
-import startupIcon from "../assets/startup-icon.svg"
-import economyIcon from "../assets/economy-icon.svg"
-import technologyIcon from "../assets/technology-icon.svg"
 import { useParams } from 'react-router-dom';
-
-const categories = [
-    {
-        icon: businessIcon,
-        title: "Business",
-        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
-    },
-    {
-        icon: startupIcon,
-        title: "Startup",
-        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
-    },
-    {
-        icon: economyIcon,
-        title: "Economy",
-        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
-    },
-    {
-        icon: technologyIcon,
-        title: "Technology",
-        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
-    },
-]
-
+import usePostStore from '../stores/Posts.store';
+import useCategoryStore from '../stores/Category.store';
 
 const Category = () => {
 
-    const [posts, setPosts] = useState([]);
-    const [arePostsLoaded, setArePostsLoaded] = useState(false);
+    const { category } = useParams();
+
+    // load [posts]
+    const { loadAllPosts, arePostsLoaded, posts } = usePostStore();
+
+    // load categories
+    const { categories } = useCategoryStore();
 
     const [filteredPosts, setFilteredPosts] = useState([]);
 
-    const { category } = useParams();
 
     useEffect(() => {
-        try {
-            axios(`http://localhost:3001/api/posts`).then(posts => {
-                // filter the array and return posts where the post.category is equal to the passed category
-                const categorisedPosts = posts.data.filter((post) => post.category === category);
+        // load [all posts]
+        loadAllPosts();
 
-                setPosts(categorisedPosts);
-                setArePostsLoaded(true);
-                // setFilteredPosts(filterPosts("Technology"));
-            })
-        } catch (error) {
-            console.log(error);
-            setArePostsLoaded(false);
-        }
+        filterPosts(category);
 
     }, [category]);
 
     function filterPosts(category) {
         if (posts) {
             const filteredPosts = posts.filter(posts => posts.category == category);
-            return filteredPosts;
+            setFilteredPosts(filteredPosts);
         } else {
             return
         }
@@ -85,14 +52,14 @@ const Category = () => {
 
                         <div className="posts-container">
                             {
-                                posts.map((post, index) => (
+                                filteredPosts.map((post, index) => (
 
                                     <PostCard1 post={post} key={index} />
 
                                 ))
                             }
                         </div> :
-                        <p>loading</p>
+                        <p>loading...</p>
                     }
                 </div>
 

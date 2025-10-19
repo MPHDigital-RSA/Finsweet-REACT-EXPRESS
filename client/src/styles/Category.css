@@ -1,6 +1,8 @@
 .category .banner p {
     max-width: 500px;
     margin-inline: auto;
+    margin-top: 10px;
+    padding-inline: 24px;
     line-height: 1.4;
 }
 

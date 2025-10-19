@@ -5,40 +5,28 @@ import businessIcon from "../assets/business-icon.svg"
 import startupIcon from "../assets/startup-icon.svg"
 import economyIcon from "../assets/economy-icon.svg"
 import technologyIcon from "../assets/technology-icon.svg"
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+
+import { useEffect } from 'react';
 import PostCard2 from '../components/PostCard2';
 import Cta from '../components/Cta';
+
+import usePostStore from '../stores/Posts.store';
 
 
 const BlogPost = () => {
 
-    const [post, setPost] = useState([]);
-    const [isPostLoaded, setIsPostloaded] = useState(false);
-
-    const [posts, setPosts] = useState([]);
-    const [arePostsLoaded, setArePostsloaded] = useState(false);
-
-    // retrieve the id
+    // retrieve the [id]
     const { id } = useParams();
 
+    // retrieve post data from the store [Posts.store.js]
+    const { loadAllPosts, arePostsLoaded, posts, loadOnePost, isPostLoaded, post } = usePostStore();
+
     useEffect(() => {
-        try {
-            axios(`https://finsweet-backend.vercel.app/api/posts/${id}`).then(post => {
-                setPost(post.data);
-                setIsPostloaded(true);
-            });
+        // loading all [posts]
+        loadAllPosts();
 
-            axios(`https://finsweet-backend.vercel.app/api/posts`).then(post => {
-                setPosts(post.data);
-                setArePostsloaded(true);
-            });
-        } catch (error) {
-            console.log(error);
-            setIsPostloaded(false);
-            setArePostsloaded(false);
-        }
-
+        // loading single [post]
+        loadOnePost(id);
     }, []);
 
     function handleIcon(post) {
@@ -52,7 +40,6 @@ const BlogPost = () => {
             return <img src={economyIcon} />
         }
     }
-
 
     return (
         <main className='blog-post'>

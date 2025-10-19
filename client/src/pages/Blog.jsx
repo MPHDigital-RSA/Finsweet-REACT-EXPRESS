@@ -1,6 +1,6 @@
 import '../styles/Blog.css';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import usePostStore from '../stores/Posts.store';
 import Cta from '../components/Cta';
 
 import businessIcon from "../assets/business-icon.svg"
@@ -37,35 +37,40 @@ const categories = [
 
 const Blog = () => {
 
-    const [posts, setPosts] = useState([]);
-    const [arePostsLoaded, setArePostsLoaded] = useState(false);
+    const { loadAllPosts, arePostsLoaded, posts } = usePostStore();
+
+    // const [posts, setPosts] = useState([]);
+    // const [arePostsLoaded, setArePostsLoaded] = useState(false);
 
     useEffect(() => {
-        try {
-            axios(`https://finsweet-backend.vercel.app/api/posts`).then(posts => {
+        // try {
+        //     axios(`https://finsweet-backend.vercel.app/api/posts`).then(posts => {
 
-                // THE OLD WAY I DID IT 😂
-                // const allPosts = []
+        //         // THE OLD WAY I DID IT 😂
+        //         // const allPosts = []
 
-                // posts.data.forEach(post => {
-                //     post.forEach(item => {
-                //         allPosts.push(item);
-                //     })
-                // });
+        //         // posts.data.forEach(post => {
+        //         //     post.forEach(item => {
+        //         //         allPosts.push(item);
+        //         //     })
+        //         // });
 
-                // setPosts(allPosts);
-                // setArePostsLoaded(true);
-                // console.log(allPosts);
+        //         // setPosts(allPosts);
+        //         // setArePostsLoaded(true);
+        //         // console.log(allPosts);
 
-                // THE BETTER WAY 😎 
-                // console.log(posts.data)
-                setPosts(posts.data)
-                setArePostsLoaded(true);
-            })
-        } catch (error) {
-            console.log(error);
-            setArePostsLoaded(false);
-        }
+        //         // THE BETTER WAY 😎 
+        //         // console.log(posts.data)
+        //         setPosts(posts.data)
+        //         setArePostsLoaded(true);
+        //     })
+        // } catch (error) {
+        //     console.log(error);
+        //     setArePostsLoaded(false);
+        // }
+
+        // load all [posts]
+        loadAllPosts();
 
     }, []);
 

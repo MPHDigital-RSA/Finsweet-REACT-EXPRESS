@@ -1,75 +1,30 @@
 import FeaturedPost from '../components/FeaturedPost';
 import PostNavigationCard from '../components/PostNavigationCard';
 import '../styles/Home.css'
-
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-import businessIcon from "../assets/business-icon.svg";
-import startupIcon from "../assets/startup-icon.svg";
-import economyIcon from "../assets/economy-icon.svg";
-import technologyIcon from "../assets/technology-icon.svg";
 import CategoryCard from '../components/CategoryCard';
-
 import whyImage from '../assets/why-big-image.png'
 import AuthorCard from '../components/AuthorCard';
 import Cta from '../components/Cta';
-
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
+import useAuthorStore from '../stores/Authors.store';
+import usePostStore from '../stores/Posts.store';
+import useCategoryStore from '../stores/Category.store';
 
-const categories = [
-    {
-        icon: businessIcon,
-        title: "Business",
-        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
-    },
-    {
-        icon: startupIcon,
-        title: "Startup",
-        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
-    },
-    {
-        icon: economyIcon,
-        title: "Economy",
-        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
-    },
-    {
-        icon: technologyIcon,
-        title: "Technology",
-        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
-    },
-]
 
 const Home = () => {
 
-    const [posts, setPosts] = useState([]);
-    const [arePostsLoaded, setArePostsLoaded] = useState(false);
-
-    const [authors, setAuthors] = useState([]);
-    const [areAuthorsLoaded, setAreAuthorsLoaded] = useState(false);
+    const { loadAuthors, areAuthorsLoaded, authors } = useAuthorStore();
+    const { loadAllPosts, arePostsLoaded, posts } = usePostStore();
+    const { categories } = useCategoryStore();
 
     useEffect(() => {
-        try {
-            axios(`https://finsweet-backend.vercel.app/api/posts`).then(posts => {
-                setPosts(posts.data)
-                setArePostsLoaded(true);
 
-                // grab all the posts and extract the Authors
-                let allAuthors = [];
-
-                posts.data.map((post) => {
-                    allAuthors.push(post.user);
-                })
-
-                setAuthors(allAuthors);
-                setAreAuthorsLoaded(true);
-            })
-        } catch (error) {
-            console.log(error);
-            setArePostsLoaded(false);
-        }
+        // load authors and all posts
+        loadAuthors();
+        loadAllPosts();
 
     }, []);
 
@@ -113,7 +68,7 @@ const Home = () => {
                             <PostNavigationCard post={post} key={index} />
                         ))}
                     </div>
-                        : <p>Loading</p>
+                        : <p>Loading...</p>
                 }
 
 
@@ -176,7 +131,7 @@ const Home = () => {
                         areAuthorsLoaded ?
                             <div className="authors-flex">
                                 {
-                                    authors.slice(1, 5).map((author, index) => (
+                                    authors.slice(0, 5).map((author, index) => (
                                         <AuthorCard author={author} key={index} />
                                     ))
 

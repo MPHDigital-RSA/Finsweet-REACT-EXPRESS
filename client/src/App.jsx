@@ -9,26 +9,27 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import Author from './pages/Author';
 import BlogPost from './pages/BlogPost';
 import Category from './pages/Category';
+import Dashboard from './pages/Dashboard';
 
 function App() {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <Routes>
         <Route path="/" exact element={<Home />} />
-        <Route path="/blog" exact element={<Blog />} />
-        <Route path="/about" exact element={<AboutUs />} />
-        <Route path="/contact" exact element={<ContactUs />} />
-        <Route path="/privacy" exact element={<PrivacyPolicy />} />
-        <Route path="/privacy" exact element={<PrivacyPolicy />} />
-        <Route path="/author/:id" exact element={<Author />} />
-        <Route path="/post/:id" exact element={<BlogPost />} />
-        <Route path="/category/:category" exact element={<Category />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/author/:id" element={<Author />} />
+        <Route path="/post/:id" element={<BlogPost />} />
+        <Route path="/category/:category" element={<Category />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }
